@@ -1,0 +1,43 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint-config-airbnb",
+    "plugin:import/recommended",
+    "airbnb-typescript",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+//  "settings": {
+//    "import/resolver": {
+//      "alias": {
+//        "map": [["providers", "./src/providers"]],
+//        "extensions": [".ts", ".tsx", ".js", ".jsx", ".json"]
+//      }
+//    }
+//  },
+  "rules": {
+    "import/prefer-default-export": "off",
+    "prettier/prettier": "error",
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/label-has-associated-control": "off"
+  },
+  "ignorePatterns": ["craco.config.js", "index.js"]
+}
