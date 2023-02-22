@@ -27,13 +27,9 @@ export const NewsPage = () => {
     error: newsError,
     nextLoad,
     reset
-  } = useGetQueryArrayData(
-    QueryService.getNews,
-    {
-      userId: selectedUserId
-    },
-    LIMIT
-  );
+  } = useGetQueryArrayData(QueryService.getNews, LIMIT, {
+    userId: selectedUserId
+  });
 
   const onLoadNext = inView => {
     if (inView) nextLoad();

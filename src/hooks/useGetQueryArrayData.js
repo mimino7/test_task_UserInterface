@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { useGetQueryData } from './useGetQueryData';
 import { usePagination } from './usePagination';
 
-export const useGetQueryArrayData = (api, params, initialLimit) => {
+export const useGetQueryArrayData = (api, initialLimit, params) => {
   const [removeData, setRemoveData] = useState(false);
   const [data, setData] = useState([]);
 

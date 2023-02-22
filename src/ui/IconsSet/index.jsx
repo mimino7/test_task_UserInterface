@@ -16,7 +16,6 @@ export const IconSet = ({ icons, edition }) => {
     <>
       {icons.map((icon, i) => {
         return (
-          // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
           <div key={i} className={styles.link}>
             {icon}
           </div>
@@ -25,8 +24,6 @@ export const IconSet = ({ icons, edition }) => {
       <button onClick={handlerLogOut} type="button" className={styles.link}>
         <LogoutOutlined className={styles.icon} />
       </button>
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
-      jsx-a11y/no-static-element-interactions */}
       <button onClick={e => edition(e)} type="button" className={styles.link}>
         <EditOutlined className={styles.icon} />
       </button>

@@ -6,11 +6,10 @@ import { QueryService } from '../../api/QueryService';
 import { ImageSet } from './ImageSet';
 import styles from './galleryPage.module.css';
 
+const LIMIT_PHOTOS = 10;
 export const GalleryPage = () => {
-  const LIMIT_PHOTOS = 10;
   const { data, loaded, error, fetching, nextLoad } = useGetQueryArrayData(
     QueryService.getPhotos,
-    {},
     LIMIT_PHOTOS
   );
 
@@ -34,7 +33,6 @@ export const GalleryPage = () => {
   return (
     <div className={styles.wrap}>
       <div className={styles.title}>Галерея</div>
-
       <div className={styles.container}>
         <ImageSet images={data} />
         {!fetching && (

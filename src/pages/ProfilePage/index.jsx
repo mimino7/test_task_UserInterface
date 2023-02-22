@@ -30,6 +30,7 @@ export const ProfilePage = () => {
 
   const editProfile = newData => {
     changeUser(newData);
+    setEdition(!isEdition);
   };
 
   return (

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { authUserApiMock } from '../mock/authUserApiMock';
 
-console.log(process.env);
 const client = axios.create({
   baseURL: process.env.REACT_APP_API_DOMAIN,
   timeout: 8000
