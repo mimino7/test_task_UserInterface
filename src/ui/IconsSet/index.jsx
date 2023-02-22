@@ -1,8 +1,17 @@
+import React, { useContext } from 'react';
+import Cookies from 'js-cookie';
 import { EditOutlined, LogoutOutlined } from '@ant-design/icons';
-import React from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
+
 import styles from './iconSet.module.css';
 
 export const IconSet = ({ icons, edition }) => {
+  const { setAuthorized } = useContext(AuthContext);
+
+  const handlerLogOut = () => {
+    setAuthorized(false);
+    Cookies.remove('jwt');
+  };
   return (
     <>
       {icons.map((icon, i) => {
@@ -13,14 +22,14 @@ export const IconSet = ({ icons, edition }) => {
           </div>
         );
       })}
-      <div className={styles.link}>
+      <button onClick={handlerLogOut} type="button" className={styles.link}>
         <LogoutOutlined className={styles.icon} />
-      </div>
+      </button>
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,
       jsx-a11y/no-static-element-interactions */}
-      <div onClick={e => edition(e)} className={styles.link}>
+      <button onClick={e => edition(e)} type="button" className={styles.link}>
         <EditOutlined className={styles.icon} />
-      </div>
+      </button>
     </>
   );
 };

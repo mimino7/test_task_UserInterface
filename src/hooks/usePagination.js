@@ -14,6 +14,7 @@ export const usePagination = (dataLength, limitInitial) => {
 
   return {
     nextLoad,
-    start
+    start,
+    setStart
   };
 };

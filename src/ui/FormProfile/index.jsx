@@ -18,11 +18,7 @@ const validateMessages = {
   }
 };
 
-const onFinish = values => {
-  console.log(values);
-};
-
-export const FormProfile = ({ userProfile, isEdition }) => {
+export const FormProfile = ({ userProfile, isEdition, onFinish, fetching }) => {
   const { name, username, email, address, company, phone, website } =
     userProfile;
 
@@ -85,7 +81,12 @@ export const FormProfile = ({ userProfile, isEdition }) => {
         <Input />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-        <Button disabled={isEdition} type="primary" htmlType="submit">
+        <Button
+          loading={fetching}
+          disabled={isEdition}
+          type="primary"
+          htmlType="submit"
+        >
           Сохранить
         </Button>
       </Form.Item>

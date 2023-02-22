@@ -37,7 +37,9 @@
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": "off",
     "react/no-array-index-key": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "prefer-promise-reject-errors": "off",
+    "import/no-extraneous-dependencies": "off"
   },
   "ignorePatterns": ["craco.config.js", "index.js"]
 }

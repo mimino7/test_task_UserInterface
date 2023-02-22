@@ -33,7 +33,12 @@
   border-radius: 12px;
 }
 .form_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 3%;
+  min-height: 500px;
 }
 .user_avatar {
   display: flex;
@@ -91,7 +96,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   justify-content: center;
   align-items: center;
   color: var(--red-error);

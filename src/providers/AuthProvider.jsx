@@ -1,11 +1,12 @@
 import React, { createContext, useMemo, useState } from 'react';
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext(null);
 
-const getInitialAuth = () => Boolean(localStorage.getItem('authorized'));
+const hasToken = () => Boolean(Cookies.get('jwt'));
 
 export const AuthProvider = ({ children }) => {
-  const [authorized, setAuthorized] = useState(getInitialAuth());
+  const [authorized, setAuthorized] = useState(hasToken());
 
   const value = useMemo(
     () => ({ authorized, setAuthorized }),

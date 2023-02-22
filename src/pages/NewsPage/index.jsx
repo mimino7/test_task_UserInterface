@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { InView } from 'react-intersection-observer';
-
 import cx from 'classnames';
+
 import { useGetQueryArrayData } from '../../hooks/useGetQueryArrayData';
 import { useGetQueryData } from '../../hooks/useGetQueryData';
 import { QueryService } from '../../api/QueryService';
@@ -23,6 +23,7 @@ export const NewsPage = () => {
   const {
     data: news,
     loaded: newsLoaded,
+    fetching: newsFetching,
     error: newsError,
     nextLoad,
     reset
@@ -34,11 +35,9 @@ export const NewsPage = () => {
     LIMIT
   );
 
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    nextLoad();
-  }, [inView]);
+  const onLoadNext = inView => {
+    if (inView) nextLoad();
+  };
 
   const changeHandle = userId => {
     reset();
@@ -65,7 +64,6 @@ export const NewsPage = () => {
     <div className={styles.wrap}>
       <div className={styles.title}>Новости</div>
       <div className={styles.container}>
-        {/* eslint-disable-next-line react/button-has-type */}
         <ItemSelect users={users} onChange={changeHandle} />
         {news.map(post => (
           <div key={post.id} className={styles.news_wrap}>
@@ -73,11 +71,14 @@ export const NewsPage = () => {
             <div className={styles.body_news}>{post.body}</div>
           </div>
         ))}
-        <InView onChange={setInView}>
-          {({ ref }) => {
-            return <div ref={ref} style={{ padding: 40 }} />;
-          }}
-        </InView>
+        {!newsFetching && (
+          <InView
+            as="div"
+            triggerOnce
+            onChange={onLoadNext}
+            className={styles.observer}
+          />
+        )}
       </div>
     </div>
   );

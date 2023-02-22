@@ -14,7 +14,10 @@ export const useGetQueryArrayData = (api, params, initialLimit) => {
     [data, removeData]
   );
 
-  const { start, nextLoad } = usePagination(data.length, initialLimit);
+  const { start, nextLoad, setStart } = usePagination(
+    data.length,
+    initialLimit
+  );
 
   const paramsExtend = useMemo(
     () => ({
@@ -31,7 +34,10 @@ export const useGetQueryArrayData = (api, params, initialLimit) => {
     onResponse
   );
 
-  const reset = useCallback(() => setRemoveData(true), []);
+  const reset = useCallback(() => {
+    setStart(0);
+    setRemoveData(true);
+  }, []);
 
   return {
     data,
